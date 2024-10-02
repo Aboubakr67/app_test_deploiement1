@@ -25,7 +25,7 @@ function ajouterProduit($nom, $description, $prix, $quantite_stock)
     }
 
     $connexion = connexion();
-    $sql = "INSERT INTO produits (nom, description, prix, quantite_stock) VALUES (:nom, :description, :prix, :quantite_stock)";
+    $sql = "INSERT INTO PRODUITS (nom, description, prix, quantite_stock) VALUES (:nom, :description, :prix, :quantite_stock)";
     $stmt = $connexion->prepare($sql);
 
     if ($stmt->execute(['nom' => $nom, 'description' => $description, 'prix' => $prix, 'quantite_stock' => $quantite_stock])) {
@@ -38,7 +38,7 @@ function ajouterProduit($nom, $description, $prix, $quantite_stock)
 function getProduitById($id)
 {
     $connexion = connexion();
-    $stmt = $connexion->prepare("SELECT * FROM produits WHERE id = :id");
+    $stmt = $connexion->prepare("SELECT * FROM PRODUITS WHERE id = :id");
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -62,7 +62,7 @@ function modifierProduit($id, $nom, $description, $prix, $quantite_stock)
 function supprimerProduit($id)
 {
     $connexion = connexion();
-    $sql = "DELETE FROM produits WHERE id = :id";
+    $sql = "DELETE FROM PRODUITS WHERE id = :id";
     $stmt = $connexion->prepare($sql);
     if ($stmt->execute(['id' => $id])) {
         return true;
@@ -75,7 +75,7 @@ function supprimerProduit($id)
 function listerProduits()
 {
     $connexion = connexion();
-    $sql = "SELECT * FROM produits";
+    $sql = "SELECT * FROM PRODUITS";
     $stmt = $connexion->prepare($sql);
     $stmt->execute();
     $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
