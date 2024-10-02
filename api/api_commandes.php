@@ -1,5 +1,5 @@
 <?php
-include 'Actions/CrudCommandes.php';
+include '../Actions/CrudCommandes.php';
 
 
 $commandes = listerCommandes();

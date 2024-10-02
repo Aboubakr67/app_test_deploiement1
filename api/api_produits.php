@@ -1,5 +1,5 @@
 <?php
-include 'Actions/CrudProduits.php';
+include_once '../Actions/CrudProduits.php';
 
 
 $produits = listerProduits();
