@@ -1,0 +1,17 @@
+{
+    "name": "aboubakr/app_test_deploiement1",
+    "autoload": {
+        "psr-4": {
+            "Aboubakr\\AppTestDeploiement1\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aboubakr",
+            "email": "aboubakr.zennir@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^11.3"
+    }
+}
