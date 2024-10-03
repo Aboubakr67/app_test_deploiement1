@@ -47,6 +47,26 @@ function getProduitById($id)
 
 function modifierProduit($id, $nom, $description, $prix, $quantite_stock)
 {
+    //   Si nom vide
+    if (empty($nom)) {
+        return false;
+    }
+
+    // Si description vide
+    if (empty($description)) {
+        return false;
+    }
+
+    // Si prix prix est négatif ou nul
+    if (empty($prix) || $prix === null || $prix <= 0) {
+        return false;
+    }
+
+    // Si quantité stock est négative
+    if (empty($quantite_stock) || $quantite_stock === null || $quantite_stock < 0) {
+        return false;
+    }
+
     $connexion = connexion();
     $sql = "UPDATE produits SET nom = :nom, description = :description, prix = :prix, quantite_stock = :quantite_stock WHERE id = :id";
     $stmt = $connexion->prepare($sql);

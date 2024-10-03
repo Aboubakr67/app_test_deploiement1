@@ -3,6 +3,12 @@ require_once 'Databases.php';
 
 function creerCommande($nom_client, $id_produit, $quantite, $date_commande)
 {
+
+    if (empty($nom_client) || $nom_client == null) {
+        // echo "Erreur: Le nom du client ne peut pas être vide.";
+        return false;
+    }
+
     $connexion = connexion();
 
     // Vérifier si la quantité du produit est disponible
@@ -12,7 +18,7 @@ function creerCommande($nom_client, $id_produit, $quantite, $date_commande)
     $produit = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($produit['quantite_stock'] < $quantite) {
-        echo "Erreur: Quantité insuffisante en stock.";
+        // echo "Erreur: Quantité insuffisante en stock.";
         return false;
     }
 
@@ -31,6 +37,11 @@ function creerCommande($nom_client, $id_produit, $quantite, $date_commande)
 
 function modifierCommande($id, $nom_client, $id_produit, $quantite, $date_commande)
 {
+    if (empty($nom_client) || $nom_client == null) {
+        // echo "Erreur: Le nom du client ne peut pas être vide.";
+        return false;
+    }
+
     $connexion = connexion();
 
     // Vérifier si la quantité du produit est disponible
@@ -40,7 +51,7 @@ function modifierCommande($id, $nom_client, $id_produit, $quantite, $date_comman
     $produit = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($produit['quantite_stock'] < $quantite) {
-        echo "Erreur: Quantité insuffisante en stock.";
+        // echo "Erreur: Quantité insuffisante en stock.";
         return false;
     }
 

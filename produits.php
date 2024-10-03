@@ -4,6 +4,21 @@ include 'Actions/CrudProduits.php';
 $produits = listerProduits();
 ?>
 
+<?php
+
+$message = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    if (supprimerProduit($id)) {
+        header('Location: produits.php');
+        exit();
+    } else {
+        $message = 'Impossible de supprimer le produit.';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -20,6 +35,9 @@ $produits = listerProduits();
     ?>
     <div class="container mt-5">
         <h2>Liste des Produits</h2>
+        <?php if ($message) : ?>
+            <div class="alert alert-danger"><?= $message ?></div>
+        <?php endif; ?>
         <a href="add_produit.php" class="btn btn-primary mb-3">Ajouter un produit</a>
 
         <table class="table table-bordered">
@@ -41,7 +59,7 @@ $produits = listerProduits();
                         <td><?= $produit['quantite_stock'] ?></td>
                         <td>
                             <a href="edit_produit.php?id=<?= $produit['id'] ?>" class="btn btn-warning">Modifier</a>
-                            <a href="delete_produit.php?id=<?= $produit['id'] ?>" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer ce produit ?')">Supprimer</a>
+                            <a href="produits.php?id=<?= $produit['id'] ?>" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer ce produit ?')">Supprimer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

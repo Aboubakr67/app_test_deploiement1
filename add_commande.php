@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="quantite" class="form-label">Quantité</label>
                 <input type="number" class="form-control" name="quantite" required>
             </div>
-
+            
             <button type="submit" class="btn btn-success">Créer Commande</button>
             <a href="commandes.php" class="btn btn-secondary">Annuler</a>
         </form>
