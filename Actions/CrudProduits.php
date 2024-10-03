@@ -68,7 +68,7 @@ function modifierProduit($id, $nom, $description, $prix, $quantite_stock)
     }
 
     $connexion = connexion();
-    $sql = "UPDATE produits SET nom = :nom, description = :description, prix = :prix, quantite_stock = :quantite_stock WHERE id = :id";
+    $sql = "UPDATE PRODUITS SET nom = :nom, description = :description, prix = :prix, quantite_stock = :quantite_stock WHERE id = :id";
     $stmt = $connexion->prepare($sql);
 
     if ($stmt->execute(['nom' => $nom, 'description' => $description, 'prix' => $prix, 'quantite_stock' => $quantite_stock, 'id' => $id])) {
