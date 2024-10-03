@@ -25,7 +25,6 @@ $commandes = listerCommandes();
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Client</th>
                     <th>Produit</th>
                     <th>Quantité</th>
@@ -37,7 +36,6 @@ $commandes = listerCommandes();
             <tbody>
                 <?php foreach ($commandes as $commande) : ?>
                     <tr>
-                        <td><?= $commande['id'] ?></td>
                         <td><?= $commande['nom_client'] ?></td>
                         <td><?= $commande['nom_produit'] ?></td>
                         <td><?= $commande['quantite'] ?></td>

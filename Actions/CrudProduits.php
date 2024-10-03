@@ -61,13 +61,25 @@ function modifierProduit($id, $nom, $description, $prix, $quantite_stock)
 
 function supprimerProduit($id)
 {
+
     $connexion = connexion();
-    $sql = "DELETE FROM PRODUITS WHERE id = :id";
+    // On vérifie si le produit est lié à des commandes
+    $sql = "SELECT COUNT(*) FROM COMMANDES WHERE id_produit = :id";
     $stmt = $connexion->prepare($sql);
-    if ($stmt->execute(['id' => $id])) {
-        return true;
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $commandes_count = $stmt->fetchColumn();
+
+    if ($commandes_count > 0) {
+        return false;
     } else {
-        return true;
+        $sql = "DELETE FROM PRODUITS WHERE id = :id";
+        $stmt = $connexion->prepare($sql);
+        if ($stmt->execute(['id' => $id])) {
+            return true;
+        } else {
+            return true;
+        }
     }
 }
 
