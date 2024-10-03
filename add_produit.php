@@ -29,6 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <?php
+    include_once 'navigation.php'
+    ?>
     <div class="container mt-5">
         <h2>Ajouter un Produit</h2>
         <?php if ($message) : ?>

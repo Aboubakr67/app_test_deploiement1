@@ -35,6 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <?php
+    include_once 'navigation.php'
+    ?>
     <div class="container mt-5">
         <h2>Modifier Commande</h2>
 

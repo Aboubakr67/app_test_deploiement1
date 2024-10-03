@@ -32,6 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <?php
+    include_once 'navigation.php'
+    ?>
     <div class="container mt-5">
         <h2>Ajouter une Commande</h2>
         <?php if ($message) : ?>
@@ -57,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="quantite" class="form-label">Quantité</label>
                 <input type="number" class="form-control" name="quantite" required>
             </div>
-            
+
             <button type="submit" class="btn btn-success">Créer Commande</button>
             <a href="commandes.php" class="btn btn-secondary">Annuler</a>
         </form>
